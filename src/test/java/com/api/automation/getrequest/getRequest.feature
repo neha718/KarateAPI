@@ -1,10 +1,13 @@
-Feature: To test the get end point of the application
-To test different get end point with different data format supported by the application
+Feature: To test the GET endpoint of the application
+  To test different GET endpoints with different data format supported by the application
 
-Scenario: To test the get end point with JSON data
-Given url 'http://localhost:9897/normal/webapi/all'
-When method get
-Then status 200
+  Background: Create and initialize the base URL
+    Given url baseUrl + '/normal/webapi/all'
+
+  Scenario: To test the GET endpoint with JSON data
+    When method get
+    Then status 200
+    And print 'GET request successful'
 
 
 

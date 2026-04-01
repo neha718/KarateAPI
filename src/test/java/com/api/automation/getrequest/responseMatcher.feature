@@ -1,16 +1,16 @@
-Feature: To Validate AGET enpoint 
-To validate the GET endpoint response
+Feature: To Validate GET endpoint
+  To validate the GET endpoint response
 
-Background: Set up base URL
-Given url 'http://localhost:9897'
+  Background: Set up base URL
+    Given url baseUrl
 
-Scenario: To eget the data in JSON format
-Given path 'normal/webapi/all'
-And header Accept = 'application/json'
-When method get
-Then status 200
-And print response
-And match response == 
+  Scenario: To get the data in JSON format
+    Given path 'normal/webapi/all'
+    And header Accept = 'application/json'
+    When method get
+    Then status 200
+    And print response
+    And match response == 
 """
 [
     {
@@ -36,35 +36,35 @@ And match response ==
 ]
 """
 
-Scenario: To eget the data in XML format
-Given path 'normal/webapi/all'
-And header Accept = 'application/xml'
-When method get
-Then status 200
-And print response
-And match response == 
+  Scenario: To get the data in XML format
+    Given path 'normal/webapi/all'
+    And header Accept = 'application/xml'
+    When method get
+    Then status 200
+    And print response
+    And match response == 
 """
 <List>
-  <item>
-    <jobId>1</jobId>
-    <jobTitle>Software Engg</jobTitle>
-    <jobDescription>To develop andriod application</jobDescription>
-    <experience>
-      <experience>Google</experience>
-      <experience>Apple</experience>
-      <experience>Mobile Iron</experience>
-    </experience>
-    <project>
-      <project>
-        <projectName>Movie App</projectName>
-        <technology>
-          <technology>Kotlin</technology>
-          <technology>SQL Lite</technology>
-          <technology>Gradle</technology>
-        </technology>
-      </project>
-    </project>
-  </item>
+    <item>
+        <jobId>1</jobId>
+        <jobTitle>Software Engg</jobTitle>
+        <jobDescription>To develop andriod application</jobDescription>
+        <experience>
+            <experience>Google</experience>
+            <experience>Apple</experience>
+            <experience>Mobile Iron</experience>
+        </experience>
+        <project>
+            <project>
+                <projectName>Movie App</projectName>
+                <technology>
+                    <technology>Kotlin</technology>
+                    <technology>SQL Lite</technology>
+                    <technology>Gradle</technology>
+                </technology>
+            </project>
+        </project>
+    </item>
 </List>
 """
 
@@ -102,12 +102,12 @@ And match response !=
 
 
 
-Scenario: To get the data in JSON format and validate a specific property
-Given path 'normal/webapi/all'
-And header Accept = 'application/json'
-When method get
-Then status 200
-And print response
-And match response contains deep { "jobDescription": "To develop andriod application"}
-And match response contains deep {"project":[{"projectName": "Movie App"}]}
-And match header Content-Type == 'application/json'
+  Scenario: To get the data in JSON format and validate a specific property
+    Given path 'normal/webapi/all'
+    And header Accept = 'application/json'
+    When method get
+    Then status 200
+    And print response
+    And match response contains deep { "jobDescription": "To develop andriod application" }
+    And match response contains deep { "project": [{"projectName": "Movie App"}] }
+    And match header Content-Type == 'application/json'

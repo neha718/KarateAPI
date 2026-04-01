@@ -1,15 +1,13 @@
 package com.api.automation.getrequest;
 
 import com.intuit.karate.junit5.Karate;
-import com.intuit.karate.junit5.Karate.Test;
 
 public class TestGetRunner2 {
-	@Test
-	public Karate runTest()
-	{
-		return Karate.run("Variable").
-				relativeTo(getClass());
-	}
 
+    @Karate.Test
+    public Karate runTest() {
+        // Make sure the feature file name matches exactly
+        return Karate.run("variable")
+                     .relativeTo(getClass());
+    }
 }
-
